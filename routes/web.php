@@ -18,24 +18,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-//Route::get('{path}',"HomeController@index")->where( 'path', '([A-z\d-/_.]+)?' );
 
-Route::get('/new_tramite', 'AcController@tramite_nuevo')->name('ac.nuevo_tramite');
-
-Route::get('/admin/', function () {
-    if (Auth::check()) {
-        return view('admin');
-    }
-    return redirect('/login');
-});
-
-// Route::get('/{vue_capture?}', function () {
-// if (Auth::check()) {
-// return view('admin');
-// }
-// return redirect('/login');
-// })->where('vue_capture', '[\/\w\.-]*');
-
-
-Route::get('/users', 'UsersController@index');
+Route::get('/usuarios', 'UsersController@users')->name('users');
+Route::get('/usuarios_json', 'UsersController@usersJson')->name('users_json');
 Route::post('/users', 'UsersController@create');
